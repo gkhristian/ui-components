@@ -60,22 +60,22 @@ export const Icons = () => (
                 <Paragraph margin='1.5rem 0 1rem 0'>We can add icon before and after by setting the iconBefore or iconAfter property and isCircle to set a circle button</Paragraph>
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button text='Primary' iconBefore='add' />
+                <Button text='Primary' iconBefore='add' ariaLabel="" />
                 <Button text='Secondary' variant='secondary' iconBefore='image' />
                 <Button text='Outline' variant='outline' iconAfter='gas' />
                 <Button text='Destructive' variant='destructive' iconBefore='delete' />
                 <Button text='Link' variant='link' iconBefore='world' />
             </Cell>
             <Cell xs={12}>
-                <Button iconBefore='add' isCircle />
-                <Button variant='secondary' iconBefore='image' isCircle />
-                <Button variant='outline' iconBefore='gas' isCircle />
-                <Button variant='destructive' iconBefore='delete' isCircle />
-                <Button variant='link' iconBefore='world' isCircle />
-                <Button iconAfter='circle_add' variant='icon' isCircle />
-                <Button iconAfter='vader' variant='icon-secondary' isCircle />
-                <Button iconAfter='search' variant='icon-outline' isCircle />
-                <Button iconAfter='star' iconColor='amber' variant='icon-secondary' isCircle size='large' />
+                <Button iconBefore='add' isCircle ariaLabel="Agregar imágen" />
+                <Button variant='secondary' iconBefore='image' isCircle ariaLabel="Seleccionar imágen" />
+                <Button variant='outline' iconBefore='gas' isCircle ariaLabel="Reacción me encanta" />
+                <Button variant='destructive' iconBefore='delete' isCircle ariaLabel="Eliminar imágen" />
+                <Button variant='link' iconBefore='world' isCircle ariaLabel="Ver mapa"/>
+                <Button iconAfter='circle_add' variant='icon' isCircle ariaLabel="Agregar imágen" />
+                <Button iconAfter='vader' variant='icon-secondary' isCircle ariaLabel="Ver personaje" />
+                <Button iconAfter='search' variant='icon-outline' isCircle ariaLabel="Buscar" />
+                <Button iconAfter='star' iconColor='amber' variant='icon-secondary' isCircle size='large' ariaLabel="Marcar como favorito" />
             </Cell>
         </Row>
     </Grid>
