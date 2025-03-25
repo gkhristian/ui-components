@@ -88,18 +88,18 @@ export const Loading = () => (
                 <Paragraph margin='1.5rem 0 1rem 0'>A loading indicator can be added to a button by setting the isLoading property on the Button</Paragraph>
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button text='Primary' iconBefore='add' isLoading />
-                <Button text='Secondary' variant='secondary' iconBefore='image' isLoading />
-                <Button text='Outline' variant='outline' iconAfter='gas' isLoading />
-                <Button text='Destructive' variant='destructive' iconBefore='delete' isLoading />
-                <Button text='Link' variant='link' iconBefore='world' isLoading />
+                <Button text='Primary' iconBefore='add' isLoading ariaLabel='Cargando por favor espere' />
+                <Button text='Secondary' variant='secondary' iconBefore='image' isLoading ariaLabel='Cargando por favor espere' />
+                <Button text='Outline' variant='outline' iconAfter='gas' isLoading ariaLabel='Cargando por favor espere' />
+                <Button text='Destructive' variant='destructive' iconBefore='delete' isLoading ariaLabel='Cargando por favor espere' />
+                <Button text='Link' variant='link' iconBefore='world' isLoading ariaLabel='Cargando por favor espere' />
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button iconBefore='add' isCircle isLoading />
-                <Button variant='secondary' iconBefore='image' isCircle isLoading />
-                <Button variant='outline' iconBefore='gas' isCircle isLoading />
-                <Button variant='destructive' iconBefore='delete' isCircle isLoading />
-                <Button variant='link' iconBefore='world' isCircle isLoading />
+                <Button iconBefore='add' isCircle isLoading ariaLabel='Cargando por favor espere' />
+                <Button variant='secondary' iconBefore='image' isCircle isLoading ariaLabel='Cargando por favor espere' />
+                <Button variant='outline' iconBefore='gas' isCircle isLoading ariaLabel='Cargando por favor espere' />
+                <Button variant='destructive' iconBefore='delete' isCircle isLoading ariaLabel='Cargando por favor espere' />
+                <Button variant='link' iconBefore='world' isCircle isLoading ariaLabel='Cargando por favor espere' />
             </Cell>
         </Row>
     </Grid>

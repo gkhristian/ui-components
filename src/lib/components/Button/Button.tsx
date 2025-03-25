@@ -98,7 +98,9 @@ export const Button = withDataId(
                     onClick={handleClick}
                     data-id={dataId}
                     data-testid={rest['data-testid'] ?? 'button'}
-                    aria-label={!text && (iconBefore || iconAfter) ? ariaLabel : undefined}            
+                    aria-label={(!text && (iconBefore || iconAfter)) || isLoading ? ariaLabel : undefined}
+                    aria-live={isLoading ? 'polite' : undefined}
+                    aria-busy={isLoading || false}
                     {...rest}
                 >
                     {isLoading ? <Spinner size={spinnerSize} data-testid='button-loading' /> : null}
