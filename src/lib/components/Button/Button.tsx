@@ -97,14 +97,15 @@ export const Button = withDataId(
                     theme={th}
                     onClick={handleClick}
                     data-id={dataId}
-                    data-testid={rest['data-testid'] ?? 'button'}                    
+                    data-testid={rest['data-testid'] ?? 'button'}
+                    aria-label={!text && (iconBefore || iconAfter) ? ariaLabel : undefined}            
                     {...rest}
                 >
                     {isLoading ? <Spinner size={spinnerSize} data-testid='button-loading' /> : null}
-                    {!isLoading && iconBefore ? <Icon name={iconBefore} size={iconSize} color={iconColor} data-testid='button-icon-before' aria-label={ariaLabel} /> : null}
+                    {!isLoading && iconBefore ? <Icon name={iconBefore} size={iconSize} color={iconColor} data-testid='button-icon-before' /> : null}
                     {text || null}
                     {children || null}
-                    {!isLoading && iconAfter ? <Icon name={iconAfter} size={iconSize} color={iconColor} data-testid='button-icon-after' aria-label={ariaLabel} /> : null}
+                    {!isLoading && iconAfter ? <Icon name={iconAfter} size={iconSize} color={iconColor} data-testid='button-icon-after' /> : null}
                 </StyledButton>
             );
             return tooltip ? <Tooltip title={tooltip}>{getStyledButton()}</Tooltip> : getStyledButton();
