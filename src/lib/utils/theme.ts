@@ -36,7 +36,7 @@ export const color = {
     gray900: '#141518',
 
     teal: '#17A994',
-    red: '#EB5312',
+    red: '#EB1212',
     orange: '#fb8f38',
     amber: '#ffc400',
     green: '#008759',
