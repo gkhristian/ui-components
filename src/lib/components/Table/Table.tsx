@@ -4,7 +4,7 @@ import omit from 'lodash/omit';
 import { Table as TableAntDesign, ConfigProvider, type TableProps as AntDTableProps } from 'antd';
 
 import defaultTheme from '@utils/theme';
-import { Button, itemRender, Pagination } from '@components';
+import { Button, Pagination } from '@components';
 import { withDataId } from '@components/DataId/withDataId';
 import { StyledResult } from '@styles/Result/StyledResult';
 import { StyledTable } from '@styles/Table/StyledTable';
@@ -136,10 +136,10 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
         dataId,
         rowsCanBeSelectAriaLabel,
         selectAllRowsAriaLabel,
-        currentPage,
-        pageSize,
+        currentPage = 1,
+        pageSize = 10,
         showSizeChanger,
-        pageSizeOptions,
+        pageSizeOptions = ['5', '10', '20'],
     } = props;
     useEffect(() => {
         const checkboxes = document.querySelectorAll('.ant-checkbox-inner');
@@ -148,11 +148,10 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
         const checkSelectAll = thead?.querySelector('.ant-checkbox-inner');
         if (checkSelectAll && selectAllRowsAriaLabel) checkSelectAll.setAttribute('aria-label', selectAllRowsAriaLabel);
     }, [rowsCanBeSelectAriaLabel, selectAllRowsAriaLabel]);
-    const [actualPage, setActualPage] = useState(currentPage ?? 1);
-    const [pageWidth, setPageWidth] = useState(pageSize ?? 10);
+    const [actualPage, setActualPage] = useState(currentPage);
+    const [pageWidth, setPageWidth] = useState(pageSize);
     const data = dataSource ?? [];
     const paginatedData = data.slice((actualPage - 1) * pageWidth, actualPage * pageWidth);
-    const pageWidthOptions = pageSizeOptions ?? ['5', '10', '20'];
 
     const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'dataSource']);
     const th = useContext(ThemeContext) || defaultTheme;
@@ -205,7 +204,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                                 prevDotsPageAriaLabel='Jumpt previous 5 pages'
                                 nextDotsPageAriaLabel='Jumpt next 5 pages'
                                 showSizeChanger={showSizeChanger}
-                                pageSizeOptions={pageWidthOptions}
+                                pageSizeOptions={pageSizeOptions}
                                 onChange={(page, size) => {
                                     setActualPage(page);
                                     setPageWidth(size);
