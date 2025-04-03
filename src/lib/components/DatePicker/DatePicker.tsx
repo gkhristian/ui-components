@@ -20,17 +20,18 @@ type CommonProps = {
 
 export type AntdDatePickerProps = DatePickerProps & CommonProps;
 
-const getLabel = (_label: ReactNode) => (
-    <label htmlFor='antd-date-picker' className='sr-only'>
+const getLabel = (_label: ReactNode, id: string) => (
+    <label htmlFor={id} className='sr-only'>
         {_label}
     </label>
 );
 
 export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, ...props }: AntdDatePickerProps) => {
     const th = useContext(ThemeContext) || theme;
+    const id = `antd-date-picker_${Date.now()}`;
     return (
         <>
-            {getLabel(label)}
+            {getLabel(label, id)}
             <ConfigProvider
                 locale={datePickerUtils.getLocale(lang ?? 'en')}
                 theme={{
@@ -42,7 +43,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                 <DropdownDatePickerStyles theme={th} />
                 <StyledAntdDatePicker
                     {...props}
-                    id='antd-date-picker'
+                    id={id}
                     data-id={dataId}
                     data-testid='antd-date-picker'
                     format={format ?? 'DD/MM/YYYY'}
@@ -51,7 +52,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     // role='dialog'
-                    aria-labelledby={dataId}
+                    //aria-labelledby={dataId}
                     aria-disabled={props.disabled || false}
                 />
             </ConfigProvider>
@@ -63,10 +64,10 @@ export type AntdRangePickerProps = RangePickerProps & CommonProps;
 
 export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, ...props }: AntdRangePickerProps) => {
     const th = useContext(ThemeContext) || theme;
-
+    const id = `antd-date-picker_${Date.now()}`;
     return (
         <>
-            {getLabel(label)}
+            {getLabel(label, id)}
             <ConfigProvider
                 locale={datePickerUtils.getLocale(lang ?? 'en')}
                 theme={{
@@ -78,7 +79,7 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                 <DropdownDatePickerStyles theme={th} />
                 <StyledAntdRangePicker
                     {...props}
-                    id='antd-range-picker'
+                    id={id}
                     data-id={dataId}
                     data-testid='antd-range-picker'
                     format={format ?? 'DD/MM/YYYY'}
@@ -86,7 +87,7 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     // role='dialog'
-                    aria-labelledby={dataId}
+                    //aria-label={id}
                     aria-disabled={(props.disabled as boolean) || false}
                 />
             </ConfigProvider>
