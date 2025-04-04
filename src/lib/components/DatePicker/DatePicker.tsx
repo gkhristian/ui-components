@@ -26,9 +26,17 @@ const getLabel = (_label: ReactNode, id: string) => (
     </label>
 );
 
-export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, ...props }: AntdDatePickerProps) => {
+const handleOpenChange = (_: boolean, ariaLabel?: string) => {
+    const pickerDropdownElem = document.querySelector('.ant-picker-dropdown');
+    if (pickerDropdownElem) {
+        pickerDropdownElem.setAttribute('role', 'dialog');
+        pickerDropdownElem.setAttribute('aria-label', ariaLabel || '');
+    }
+}
+
+export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, ...props }: AntdDatePickerProps) => {
     const th = useContext(ThemeContext) || theme;
-    const id = `antd-date-picker_${Date.now()}`;
+    const id = `antd-date-picker_${Date.now()}`;    
     return (
         <>
             {getLabel(label, id)}
@@ -51,9 +59,8 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     prevIcon={<Icon name='chevron_left_l' size={10} color='gray600' ariaLabel='Previous page' />}
                     suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
-                    // role='dialog'
-                    //aria-labelledby={dataId}
-                    aria-disabled={props.disabled || false}
+                    aria-disabled={disabled}
+                    onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
                 />
             </ConfigProvider>
         </>
@@ -62,7 +69,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
 
 export type AntdRangePickerProps = RangePickerProps & CommonProps;
 
-export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, ...props }: AntdRangePickerProps) => {
+export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, disabled, ...props }: AntdRangePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     const id = `antd-date-picker_${Date.now()}`;
     return (
@@ -86,9 +93,8 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     separator={<Icon name='arrow_right' size={18} color='gray600' ariaLabel='to' />}
                     suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
-                    // role='dialog'
-                    //aria-label={id}
-                    aria-disabled={(props.disabled as boolean) || false}
+                    onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
+                    aria-disabled={disabled as boolean || false}
                 />
             </ConfigProvider>
         </>
